@@ -168,7 +168,21 @@ class _CredentialEditPageState extends ConsumerState<CredentialEditPage> {
       ref.invalidate(credentialDetailProvider(id));
 
       if (!mounted) return;
-      context.go('/credentials/$id');
+      final detailRoute = '/credentials/$id';
+      if (widget.credentialId == null) {
+        if (context.canPop()) {
+          context.pushReplacement(detailRoute);
+        } else {
+          context.go(detailRoute);
+        }
+        return;
+      }
+
+      if (context.canPop()) {
+        context.pop();
+      } else {
+        context.go(detailRoute);
+      }
     } finally {
       if (mounted) {
         setState(() => _loading = false);

@@ -33,6 +33,9 @@ migrate_working_dir/
 /build/
 /android/.gradle/
 /android/local.properties
+/android/key.properties
+/android/*.jks
+/android/*.keystore
 /coverage/
 releases/
 asyncConfig/
